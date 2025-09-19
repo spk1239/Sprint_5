@@ -23,5 +23,3 @@ class TestLogout:
         current_url = driver.current_url
         
         assert "login" in current_url
-        
-        driver.quit()

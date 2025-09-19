@@ -23,7 +23,6 @@ class TestRegistration:
 
         assert "stellarburgers.nomoreparties.site/register" in current_url
         
-        driver.quit()
 
     
     def test_registration_error_password_5_simbols(self,driver):
@@ -44,4 +43,3 @@ class TestRegistration:
 
         assert error_text.is_displayed()
         
-        driver.quit()

@@ -16,7 +16,6 @@ class TestTransistionsPages:
 
         assert ".site/login" in current_url
 
-        driver.quit()
     
     
     def test_transition_designer(self, driver):
@@ -29,7 +28,6 @@ class TestTransistionsPages:
 
         assert current_url == "https://stellarburgers.nomoreparties.site/"
 
-        driver.quit()
 
     
     def test_transition_logo(self, driver):
@@ -42,5 +40,5 @@ class TestTransistionsPages:
 
         assert current_url == "https://stellarburgers.nomoreparties.site/"
 
-        driver.quit()
+       
 

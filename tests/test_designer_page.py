@@ -2,48 +2,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from data import Data
 from locators import Locators
+import pytest
 
 
 class TestDesigner:
-    
-    def test_sauces_section_aria_selected(self, driver):
+
+    @pytest.mark.parametrize("locator", [Locators.SAUCES_PAGE, Locators.ROLLS_PAGE, Locators.TOPPINGS_PAGE])
+    def test_designer_page_aria_selected(self, driver,locator):
 
         driver.get(Data.STELLAR_BURGER_URL)
 
-        driver.find_element(*Locators.SAUCES_PAGE).click()
-        
-        sauces_class = driver.find_element(*Locators.SAUCES_PAGE).get_attribute('class')
+        element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(locator))
 
-        assert "tab_tab__1SPyG tab_tab_type_current__2BEPc" in sauces_class
+        driver.execute_script("arguments[0].click();", element)
 
-        driver.quit()
+        assert "tab_tab_type_current__2BEPc" in element.get_attribute("class") 
 
 
-    def test_rolls_section_aria_selected(self, driver):
 
-        driver.get(Data.STELLAR_BURGER_URL)
-
-        driver.find_element(*Locators.SAUCES_PAGE).click()
-
-        driver.find_element(*Locators.ROLLS_PAGE).click()
-        
-        rolls_class = driver.find_element(*Locators.ROLLS_PAGE).get_attribute('class')
-
-        assert "tab_tab__1SPyG tab_tab_type_current__2BEPc" in rolls_class
-
-        driver.quit()
-    
-
-    def test_toppings_section_aria_selected(self, driver):
-
-        driver.get(Data.STELLAR_BURGER_URL)
-
-        driver.find_element(*Locators.TOPPINGS_PAGE).click()
-        
-        toppings_class = driver.find_element(*Locators.TOPPINGS_PAGE).get_attribute('class')
-
-        assert "tab_tab__1SPyG tab_tab_type_current__2BEPc" in toppings_class
-
-        driver.quit()
-
+   
     

@@ -23,14 +23,13 @@ class TestLoginToAccount:
 
         assert "site/account" in current_url
 
-        driver.quit()
 
     
     def test_login_in_main_page(self, driver):
 
         driver.get(Data.STELLAR_BURGER_URL)
 
-        driver.find_element(*Locators.BUTTON_LOG_IN_ACCOUNT).click()
+        driver.find_element(*Locators.BUTTON_IN_ACCOUNT).click()
 
         driver.find_element(*Locators.EMAIL_INPUT).send_keys('test_email_adress@yandex.ru')
 
@@ -44,7 +43,6 @@ class TestLoginToAccount:
 
         assert "site/account" in current_url
 
-        driver.quit()
 
     
     def test_login_in_registration_page(self, driver):
@@ -65,14 +63,13 @@ class TestLoginToAccount:
 
         assert "site/account" in current_url
 
-        driver.quit()
 
     
     def test_login_in_password_recovery_page(self, driver):
 
         driver.get(Data.STELLAR_BURGER_URL)
 
-        driver.find_element(*Locators.BUTTON_LOG_IN_ACCOUNT).click()
+        driver.find_element(*Locators.BUTTON_IN_ACCOUNT).click()
         
         driver.find_element(*Locators.BUTTON_PASSWORD_RECOVERY ).click()
 
@@ -89,5 +86,3 @@ class TestLoginToAccount:
         current_url = driver.current_url
 
         assert "site/account" in current_url
-
-        driver.quit()
